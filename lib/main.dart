@@ -1,4 +1,5 @@
 import 'package:art_gallery_auction/pages/page_root.dart';
+import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,13 +12,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'BlueOvel Gallery',
+      title: 'BlueObel Gallery',
       theme: ThemeData(
-        splashColor: Colors.yellowAccent,
+        textTheme: TextTheme(
+          headline1: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+          headline2: TextStyle(fontSize: 15, color: Colors.black87),
+        ),
+        accentColor: designColorGrey,
+        splashColor: designColorBrightBrown,
         fontFamily: "Font1",
-        indicatorColor: Colors.indigoAccent,
-        scaffoldBackgroundColor: Colors.white,
-        canvasColor: Colors.indigoAccent,
+        indicatorColor: designColorDarkBrown,
+        scaffoldBackgroundColor: Color.fromARGB(255, 253, 253, 253),
+        canvasColor: designColorDarkBrown,
       ),
       home: SafeArea(child: RootPage()),
     );
