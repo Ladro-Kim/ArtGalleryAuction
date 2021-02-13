@@ -3,7 +3,6 @@ import 'package:art_gallery_auction/widgets/widget_custom_title.dart';
 import 'package:art_gallery_auction/widgets/widget_listview_horizontal.dart';
 import 'package:art_gallery_auction/widgets/widget_sliver_persistent_header.dart';
 import 'package:art_gallery_auction/widgets/widget_title_and_dropdown.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeGeneralPage extends StatefulWidget {
@@ -54,7 +53,10 @@ class _HomeGeneralPageState extends State<HomeGeneralPage> {
             delegate: SliverChildListDelegate([
           Column(
             children: [
-              CustomTitle(textColor: Colors.redAccent, title: "Today's Hot", backgroundColor: designColorBrightGrey),
+              CustomTitle(
+                  textColor: Colors.redAccent,
+                  title: "Today's Hot",
+                  backgroundColor: designColorBrightGrey),
               SizedBox(height: 8),
               HorizontalListview(items: _dummyImages),
             ],
@@ -106,42 +108,35 @@ class _HomeGeneralPageState extends State<HomeGeneralPage> {
   }
 
   Widget _buildCategories() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        DropdownButton(
-            onChanged: (index) {},
-            items: _dropDownItems,
-            hint: Text(" ")),
-        DropdownButton(
-            onChanged: (index) {},
-            items: _dropDownItems,
-            hint: Text(" ")),
-        ElevatedButton.icon(
-            onPressed: (){},
-            icon: Icon(Icons.nature_outlined), label: Text(pickerValue))
-      ],
-    );
+    return null;
   }
-
-  // Widget CupertinoPicker(){
-  //           showCupertinoModalPopup(
-  //               context: context,
-  //               builder: (context) {
-  //                 return Container(
-  //                   height: 400,
-  //                   child: Column(
-  //                     children: [
-  //                       Expanded(child: CupertinoPicker(
-  //                         itemExtent: 50,
-  //                         backgroundColor: Colors.white,
-  //                         scrollController: pickerController,
-  //                         onSelectedItemChanged: (index) {
-  //                         },
-  //                       ))
-  //                     ],
-  //                   ),
-  //                 );
-  //               });
-  //         }
 }
+
+// Row(
+// mainAxisAlignment: MainAxisAlignment.spaceAround,
+// children: [
+// DropdownButton(
+// onChanged: (index) {}, items: _dropDownItems, hint: Text(" ")),
+// DropdownButton(
+// onChanged: (index) {}, items: _dropDownItems, hint: Text(" ")),
+// ElevatedButton.icon(
+// icon: Icon(Icons.nature_outlined),
+// label: Text(pickerValue),
+// onPressed: () {
+// showModalBottomSheet(
+// backgroundColor: Colors.white,
+// isScrollControlled: false,
+// context: context,
+// builder: (context) {
+// return Card(
+// child: Container(
+// height: 400,
+// child: Column(
+// children: [Text("test1"), Text("Test2")],
+// ),
+// ),
+// );
+// });
+// }),
+// ],
+// );
