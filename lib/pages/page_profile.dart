@@ -1,5 +1,7 @@
 import 'package:art_gallery_auction/utils/design_guide.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -121,7 +123,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding: EdgeInsets.only(left: 10),
                   alignment: Alignment.centerLeft,
                   child: TextButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        GoogleSignIn _googleSignIn = GoogleSignIn();
+                        FirebaseAuth.instance.signOut();
+                        _googleSignIn.signOut();
+                      },
                       icon: Icon(Icons.logout),
                       label: Text('Log out')),
                 ),

@@ -2,6 +2,7 @@ import 'package:art_gallery_auction/pages/page_detailed_item.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:art_gallery_auction/widgets/widget_small_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HorizontalListview extends StatefulWidget {
   List<String> items;
@@ -43,7 +44,8 @@ class _HorizontalListviewState extends State<HorizontalListview> {
                               fit: BoxFit.fitWidth),
                         ),
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedItemPage()));
+                          Get.to(DetailedItemPage());
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedItemPage()));
                         },
                       ),
                       SizedBox(height: 10),

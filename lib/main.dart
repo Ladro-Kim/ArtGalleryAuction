@@ -1,8 +1,16 @@
 import 'package:art_gallery_auction/pages/page_root.dart';
+import 'package:art_gallery_auction/pages/page_sign_in.dart';
+import 'package:art_gallery_auction/pages/page_tab.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -10,8 +18,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      getPages: [
+        GetPage(
+            name: '/RootPage',
+            page: () => RootPage(),
+            transition: Transition.zoom,
+            transitionDuration: Duration(milliseconds: 500)),
+        GetPage(name: '/SignInPage', page: () => SignInPage()),
+        GetPage(name: '/TabPage', page: () => TabPage()),
+      ],
       // routes: {
       //   '/RootPage': (context) => RootPage(),
       //   '/SignInPage': (context) => SignInPage(),
@@ -20,7 +37,8 @@ class MyApp extends StatelessWidget {
       title: 'BlueObel Gallery',
       theme: ThemeData(
         textTheme: TextTheme(
-          headline1: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+          headline1: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
           headline2: TextStyle(fontSize: 15, color: Colors.black87),
         ),
         accentColor: designColorGrey,
@@ -30,7 +48,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color.fromARGB(255, 253, 253, 253),
         canvasColor: designColorDeepDarkBrown,
       ),
-      home: SafeArea(child: RootPage()),
+      home: SafeArea(
+        child: RootPage(),
+      ),
     );
   }
 }
