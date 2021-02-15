@@ -1,4 +1,3 @@
-import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:flutter/material.dart';
 
 class CustomTitle extends StatelessWidget {
@@ -15,7 +14,7 @@ class CustomTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: designColorBrightGrey,
+          color: backgroundColor,
           ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
