@@ -1,5 +1,4 @@
 import 'package:art_gallery_auction/pages/page_chat.dart';
-import 'package:art_gallery_auction/pages/page_current_item.dart';
 import 'package:art_gallery_auction/pages/page_home.dart';
 import 'package:art_gallery_auction/pages/page_profile.dart';
 import 'package:art_gallery_auction/pages/page_story.dart';
@@ -13,7 +12,7 @@ class TabPage extends StatefulWidget {
 
 class _TabPageState extends State<TabPage> {
   int _pageIndex = 0;
-  List<Widget> _pages = [HomePage(), StoryPage(), ChatPage(), ProfilePage(), CurrentItemsPage()];
+  List<Widget> _pages = [HomePage(), StoryPage(), ChatPage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +32,6 @@ class _TabPageState extends State<TabPage> {
           icon: Icon(Icons.chat_bubble_outline), label: "Chat"),
       BottomNavigationBarItem(
           icon: Icon(Icons.person_outline), label: "Profile"),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.history_outlined), label: "CurrentItems"),
     ];
 
     return BottomNavigationBar(

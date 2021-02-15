@@ -1,3 +1,4 @@
+import 'package:art_gallery_auction/pages/page_detailed_item.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:art_gallery_auction/widgets/widget_custom_title.dart';
 import 'package:art_gallery_auction/widgets/widget_listview_horizontal.dart';
@@ -70,13 +71,15 @@ class _HomeGeneralPageState extends State<HomeGeneralPage> {
                 minHeight: 120,
                 maxHeight: 120,
                 child: Container(
-                  color: designColorBrightGrey,
+                  decoration: BoxDecoration(
+                    color: designColorBrightGrey,
+                  ),
                   child: Column(
                     children: [
                       TitleAndDropdown(
                           title: "Artworks",
                           items: _dropDownItems,
-                          color: Colors.blue,
+                          color: Colors.blueAccent,
                           icon: Icon(
                             Icons.sort,
                             color: Colors.grey,
@@ -90,53 +93,63 @@ class _HomeGeneralPageState extends State<HomeGeneralPage> {
           childAspectRatio: 1,
           crossAxisCount: 2,
           children: List.generate(
-              _dummyImages.length,
-              (index) => Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Image.asset(_dummyImages[index]),
-                          Text(index.toString()),
-                        ],
-                      ),
-                    ),
-                  )),
+            _dummyImages.length,
+            (index) => InkWell(
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Image.asset(_dummyImages[index]),
+                      Text(index.toString()),
+                    ],
+                  ),
+                ),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return DetailedItemPage();
+                  }),
+                );
+              },
+            ),
+          ),
         ),
       ],
     );
   }
 
   Widget _buildCategories() {
-    return null;
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+      DropdownButton(
+          onChanged: (index) {}, items: _dropDownItems, hint: Text(" ")),
+      DropdownButton(
+          onChanged: (index) {}, items: _dropDownItems, hint: Text(" ")),
+      ElevatedButton.icon(
+          icon: Icon(Icons.nature_outlined),
+          label: Text(pickerValue),
+          onPressed: () {
+            showModalBottomSheet(
+                backgroundColor: Color.fromARGB(0, 255, 255, 255),
+                isScrollControlled: false,
+                context: context,
+                builder: (context) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.lightBlueAccent,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30)),
+                    ),
+                    height: 400,
+                    child: Column(
+                      children: [Text("test1"), Text("Test2")],
+                    ),
+                  );
+                });
+          }),
+    ]);
   }
 }
-
-// Row(
-// mainAxisAlignment: MainAxisAlignment.spaceAround,
-// children: [
-// DropdownButton(
-// onChanged: (index) {}, items: _dropDownItems, hint: Text(" ")),
-// DropdownButton(
-// onChanged: (index) {}, items: _dropDownItems, hint: Text(" ")),
-// ElevatedButton.icon(
-// icon: Icon(Icons.nature_outlined),
-// label: Text(pickerValue),
-// onPressed: () {
-// showModalBottomSheet(
-// backgroundColor: Colors.white,
-// isScrollControlled: false,
-// context: context,
-// builder: (context) {
-// return Card(
-// child: Container(
-// height: 400,
-// child: Column(
-// children: [Text("test1"), Text("Test2")],
-// ),
-// ),
-// );
-// });
-// }),
-// ],
-// );

@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage>
       appBar: AppBar(
         title: Text("BlueObel Gallery",
             style: Theme.of(context).textTheme.headline1),
-        backgroundColor: designColorDarkBrown,
+        backgroundColor: designColorDeepDarkBrown,
         centerTitle: true,
       ),
       body: Column(

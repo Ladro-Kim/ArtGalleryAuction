@@ -12,6 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      // routes: {
+      //   '/RootPage': (context) => RootPage(),
+      //   '/SignInPage': (context) => SignInPage(),
+      //   '/TabPage': (context) => TabPage(),
+      // },
       title: 'BlueObel Gallery',
       theme: ThemeData(
         textTheme: TextTheme(
@@ -21,9 +26,9 @@ class MyApp extends StatelessWidget {
         accentColor: designColorGrey,
         splashColor: designColorBrightBrown,
         fontFamily: "Font1",
-        indicatorColor: designColorDarkBrown,
+        indicatorColor: designColorDeepDarkBrown,
         scaffoldBackgroundColor: Color.fromARGB(255, 253, 253, 253),
-        canvasColor: designColorDarkBrown,
+        canvasColor: designColorDeepDarkBrown,
       ),
       home: SafeArea(child: RootPage()),
     );
