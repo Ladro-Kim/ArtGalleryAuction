@@ -1,10 +1,12 @@
 import 'package:art_gallery_auction/pages/page_detailed_item.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
+import 'package:art_gallery_auction/utils/picker_data.dart';
 import 'package:art_gallery_auction/widgets/widget_custom_title.dart';
 import 'package:art_gallery_auction/widgets/widget_listview_horizontal.dart';
 import 'package:art_gallery_auction/widgets/widget_sliver_persistent_header.dart';
 import 'package:art_gallery_auction/widgets/widget_title_and_dropdown.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_picker/flutter_picker.dart';
 
 class HomeGeneralPage extends StatefulWidget {
   @override
@@ -131,25 +133,52 @@ class _HomeGeneralPageState extends State<HomeGeneralPage> {
           icon: Icon(Icons.nature_outlined),
           label: Text(pickerValue),
           onPressed: () {
-            showModalBottomSheet(
-                backgroundColor: Color.fromARGB(0, 255, 255, 255),
-                isScrollControlled: false,
-                context: context,
-                builder: (context) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: Colors.lightBlueAccent,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30)),
-                    ),
-                    height: 400,
-                    child: Column(
-                      children: [Text("test1"), Text("Test2")],
-                    ),
-                  );
-                });
+            showPickerModal(context);
           }),
     ]);
   }
+
+  showPickerModal(BuildContext context) {
+    Picker(
+        backgroundColor: designColorBrightGrey,
+        textStyle: TextStyle(color: designColorDeepDarkBrown, fontSize: 17),
+        title: Text(
+          "Category",
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),
+        ),
+        confirmText: 'Confirm',
+        confirmTextStyle: TextStyle(fontSize: 15, color: Colors.blue),
+        cancelText: 'Cancel',
+        cancelTextStyle: TextStyle(fontSize: 15, color: Colors.red),
+        headercolor: designColorDeepDarkBrown,
+        adapter: PickerDataAdapter<String>(
+          pickerdata: pickerDatas,
+        ),
+        changeToFirst: true,
+        hideHeader: false,
+        onConfirm: (Picker picker, List value) {
+          print(value.toString());
+          print(picker.adapter.text);
+        }).showModal(this.context); //_scaffoldKey.currentState);
+  }
 }
+//
+// showModalBottomSheet(
+// backgroundColor: Color.fromARGB(0, 255, 255, 255),
+// isScrollControlled: false,
+// context: context,
+// builder: (context) {
+// return Container(
+// decoration: BoxDecoration(
+// color: Colors.lightBlueAccent,
+// borderRadius: BorderRadius.only(
+// topLeft: Radius.circular(30),
+// topRight: Radius.circular(30)),
+// ),
+// height: 400,
+// child: Column(
+// children: [Text("test1"), Text("Test2")],
+// ),
+// );
+// });

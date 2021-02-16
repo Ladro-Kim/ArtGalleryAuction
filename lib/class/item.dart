@@ -1,26 +1,36 @@
-import 'package:art_gallery_auction/class/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Item {
-  User user;
-
-  int itemNo;
-  String itemName;
-  bool isAuction; // general, auction
-  int salesStatus; // 0: Done, 1 : OnSale, 2 : Reserved
-  bool isHot;
-  List<String> imagesUris;
-  String country;
-  DateTime loadDate;
+  DateTime uploadDate;
   DateTime expireDate;
-  DateTime createdDate;
-  double price = 0;
-  double discountPercent = 0.0;
-  bool isVisible;
-  String category1, category2, category3;
-  bool isDeliveryPay;
-  double deliveryPay;
-  int viewCount;
-  String description;
-  String hashTag;
+
+  List<String> imagesUris = [];   // user input
+
+  String sItemIndex;
+  String sItemName;   // user input
+  String sCountry;
+  String sCategory1, sCategory2, sCategory3;    // user input
+  String sDescription;    // user input
+  String sHashTag;    // user input
+
+  int iSalesIndex = 0; // enum type, get value using SalesIndex.value.index,   user input
+  int iViewCount = 0;
+  int iCreateYear;    // user input
+
+  num dPrice = 0;   // user input
+  num dDiscountPercent = 0;   // user input
+  num dDeliveryPay = 0;   // user input
+
+  bool isVisible = false;   // user input
+  bool isHot = false;
+  bool isAuction = false; // general, auction,    user input
+  bool isDeliveryPay = false;
+
+  Item() {
+    uploadDate = DateTime.now();
+    expireDate = uploadDate.add(Duration(days: 7));
+    sItemIndex = FirebaseAuth.instance.currentUser.email + uploadDate.toString();
+  } // user input
+
 
 }

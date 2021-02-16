@@ -1,6 +1,8 @@
 import 'dart:io';
-
+import 'package:art_gallery_auction/class/item.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
+import 'package:art_gallery_auction/widgets/widget_custom_switch.dart';
+import 'package:art_gallery_auction/widgets/widget_time_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,9 +13,18 @@ class AddItemPage extends StatefulWidget {
 }
 
 class _AddItemPageState extends State<AddItemPage> {
-  ImagePicker _imagePicker = ImagePicker();
+  ImagePicker _imagePicker;
   PickedFile _pickedImage;
   List<File> _images = [];
+
+  Item item;
+
+  @override
+  void initState() {
+    _imagePicker = ImagePicker();
+    item = Item();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +74,7 @@ class _AddItemPageState extends State<AddItemPage> {
             ),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'How to sell',
+                labelText: 'Price',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -71,7 +82,36 @@ class _AddItemPageState extends State<AddItemPage> {
             ),
             TextFormField(
               decoration: InputDecoration(
-                labelText: 'Item name',
+                labelText: 'Discount',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+            TimeText(title: 'Upload', value: "${item.uploadDate}"),
+            TimeText(title: 'Expire', value: "${item.expireDate}"),
+            CustomSwitch(switchValue: item.isAuction, title: 'Sales type', falseText: 'General', trueText: 'Auction'),
+            CustomSwitch(switchValue: item.isVisible, title: 'Public', falseText: 'False', trueText: 'True'),
+            CustomSwitch(switchValue: item.isDeliveryPay, title: 'Delivery pay', falseText: 'Artist', trueText: 'Buyer'),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'description',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'delivery pay',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'hashTags',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -106,18 +146,61 @@ class _AddItemPageState extends State<AddItemPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8)
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.photo, color: Colors.blue),
+                        Text(
+                          " Gallery",
+                          style: TextStyle(color: Colors.blue, fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 5),
+                    Text("Get a picture from Gallery.\n"),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.camera, color: Colors.orangeAccent),
+                        Text(" Camera",
+                            style: TextStyle(
+                                color: Colors.orangeAccent, fontSize: 16)),
+                      ],
+                    ),
+                    SizedBox(height: 5),
+                    Text("Turn on the Camera and take a picture."),
+                  ],
+                )
+              ],
+            ),
           ),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.white,
           elevation: 1,
+          actionsPadding: EdgeInsets.symmetric(horizontal: 6),
           actions: [
-            ElevatedButton(onPressed: () {
-              GetImageFromGallery();
-            }, child: Text("Gallery")),
-            ElevatedButton(onPressed: (){
-              GetImageFromCamera();
-            }, child: Text("Camera")),
+            TextButton(
+              child: Text("Gallery", style: TextStyle(color: Colors.blue)),
+              onPressed: () {
+                GetImageFromGallery();
+              },
+            ),
+            TextButton(
+              child:
+                  Text("Camera", style: TextStyle(color: Colors.orangeAccent)),
+              onPressed: () {
+                GetImageFromCamera();
+              },
+            ),
           ],
         );
       },
