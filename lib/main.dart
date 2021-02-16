@@ -1,3 +1,4 @@
+import 'package:art_gallery_auction/pages/page_add_item.dart';
 import 'package:art_gallery_auction/pages/page_root.dart';
 import 'package:art_gallery_auction/pages/page_sign_in.dart';
 import 'package:art_gallery_auction/pages/page_tab.dart';
@@ -20,14 +21,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: '/RootPage',
       getPages: [
         GetPage(
             name: '/RootPage',
             page: () => RootPage(),
-            transition: Transition.zoom,
+            transition: Transition.fadeIn,
             transitionDuration: Duration(milliseconds: 500)),
-        GetPage(name: '/SignInPage', page: () => SignInPage()),
-        GetPage(name: '/TabPage', page: () => TabPage()),
+        GetPage(
+            name: '/SignInPage',
+            page: () => SignInPage(),
+            transition: Transition.fadeIn,
+            transitionDuration: Duration(milliseconds: 500)),
+        GetPage(
+            name: '/TabPage',
+            page: () => TabPage(),
+            transition: Transition.fadeIn,
+            transitionDuration: Duration(milliseconds: 500)),
+        GetPage(
+            name: '/AddItemPage',
+            page: () => AddItemPage(),
+            transition: Transition.size,
+            transitionDuration: Duration(milliseconds: 400)),
       ],
       // routes: {
       //   '/RootPage': (context) => RootPage(),

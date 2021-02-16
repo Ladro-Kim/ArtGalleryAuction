@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "544688552483",
+    "project_id": "blueobelgallery",
+    "storage_bucket": "blueobelgallery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544688552483:android:40b7c756fae9ab3644cf96",
+        "android_client_info": {
+          "package_name": "com.art_gallery_auction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544688552483-n7121ut2cc6h6i9js0ltk8bp654o4n75.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.art_gallery_auction",
+            "certificate_hash": "1196cbea1f68ffde8bba1a25a6fa503a6c216b4a"
+          }
+        },
+        {
+          "client_id": "544688552483-n33lqq605ksngrvuf3s8qgod0hf8co98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_GL7FMXX7TqkEkXHZFpQd3Y6gmVtQ3is"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544688552483-n33lqq605ksngrvuf3s8qgod0hf8co98.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

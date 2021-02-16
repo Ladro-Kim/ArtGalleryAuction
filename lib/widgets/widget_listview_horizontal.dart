@@ -1,7 +1,7 @@
 import 'package:art_gallery_auction/pages/page_detailed_item.dart';
-import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:art_gallery_auction/widgets/widget_small_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:get/get.dart';
 
 class HorizontalListview extends StatefulWidget {
@@ -19,45 +19,46 @@ class _HorizontalListviewState extends State<HorizontalListview> {
     return Container(
       height: 260,
       width: MediaQuery.of(context).size.width,
-      child: ListView.builder(
-          shrinkWrap: true,
-          reverse: false,
-          itemCount: widget.items.length,
+      child: Swiper(
+        viewportFraction: 0.8,
+        scale: 0.6,
+        onTap: (index){},
+          control: SwiperControl(
+            color: Colors.blueAccent
+          ),
+          pagination: SwiperPagination(
+            alignment: Alignment.bottomCenter,
+          ),
+          autoplay: true,
+          autoplayDelay: 4000,
           scrollDirection: Axis.horizontal,
+          duration: 500,
+          curve: Curves.fastOutSlowIn,
+          itemCount: widget.items.length,
           itemBuilder: (context, index) {
-            return Container(
-              width: 270,
-              child: Card(
-                elevation: 1,
-                shadowColor: designColorGrey,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      InkWell(
-                        child: Hero(
-                          tag: 'test-$index',
-                          child: Image.asset(widget.items[index],
-                              fit: BoxFit.fitWidth),
-                        ),
-                        onTap: () {
-                          Get.to(DetailedItemPage());
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedItemPage()));
-                        },
-                      ),
-                      SizedBox(height: 10),
-                      SmallProfile(
-                        pictureSize: 20,
-                        isCountry: false,
-                        textSize: 10,
-                        width: 200,
-                      ),
-                    ],
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  InkWell(
+                    child: Hero(
+                      tag: 'test-$index',
+                      child: Image.asset(widget.items[index],
+                          fit: BoxFit.fitHeight, height: 180,),
+                    ),
+                    onTap: () {
+                      Get.to(DetailedItemPage());
+                      // Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedItemPage()));
+                    },
                   ),
-                ),
+                  SizedBox(height: 10),
+                  SmallProfile(
+                    pictureSize: 20,
+                    isCountry: false,
+                    textSize: 10,
+                    width: 200,
+                  ),
+                ],
               ),
             );
           }),

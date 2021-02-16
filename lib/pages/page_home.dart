@@ -2,6 +2,7 @@ import 'package:art_gallery_auction/pages/page_home_auction.dart';
 import 'package:art_gallery_auction/pages/page_home_general.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -32,6 +33,18 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: MaterialButton(
+        shape: BeveledRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        minWidth: 10,
+        color: Color.fromARGB(200, 125, 112, 100),
+        child: Icon(Icons.add, color: Colors.white),
+        onPressed: (){
+          Get.toNamed('/AddItemPage');
+        },
+      ),
       backgroundColor: Colors.white,
       drawer: Drawer(
         elevation: 3,

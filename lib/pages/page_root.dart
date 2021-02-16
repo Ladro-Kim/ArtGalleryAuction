@@ -15,7 +15,6 @@ class RootPage extends StatelessWidget {
         else if (snapshot.hasData)
           return TabPage();
         else {
-          print("else");
           return SignInPage();
         }
       }
