@@ -1,7 +1,10 @@
+import 'package:art_gallery_auction/providers/firebase_uploader.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
+import 'package:art_gallery_auction/widgets/widget_custom_expanded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -79,66 +82,31 @@ class _ProfilePageState extends State<ProfilePage> {
                 ],
               ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              child: Card(
-                elevation: 1,
-                child: Container(
-                  padding: EdgeInsets.only(left: 10),
-                  alignment: Alignment.centerLeft,
-                  child: TextButton.icon(
-                      onPressed: () {},
-                      icon: Icon(Icons.history_outlined),
-                      label: Text('Sales List')),
-                ),
-              ),
+            Card(
+              elevation: 1,
+              child: CustomExpandedButton(icon: Icons.done, content: 'Sales History'),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              child: Card(
-                elevation: 1,
-                child: Container(
-                  padding: EdgeInsets.only(left: 10),
-                  alignment: Alignment.centerLeft,
-                  child: TextButton.icon(
-                      onPressed: () {},
-                      icon: Icon(Icons.history_outlined),
-                      label: Text('Purchase List')),
-                ),
-              ),
+            Card(
+              elevation: 1,
+              child: CustomExpandedButton(icon: Icons.card_travel, content: 'Purchase History'),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              child: Card(
-                elevation: 1,
-                child: Container(
-                  padding: EdgeInsets.only(left: 10),
-                  alignment: Alignment.centerLeft,
-                  child: TextButton.icon(
-                      onPressed: () {},
-                      icon: Icon(Icons.history_outlined),
-                      label: Text('My Stories')),
-                ),
-              ),
+            Card(
+              elevation: 1,
+              child: CustomExpandedButton(icon: Icons.book_outlined, content: 'My Stories'),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              child: Card(
-                elevation: 1,
-                child: Container(
-                  padding: EdgeInsets.only(left: 10),
-                  alignment: Alignment.centerLeft,
-                  child: TextButton.icon(
-                      onPressed: () {
-                        GoogleSignIn _googleSignIn = GoogleSignIn();
-                        FirebaseAuth.instance.signOut();
-                        _googleSignIn.signOut();
-                      },
-                      icon: Icon(Icons.logout),
-                      label: Text('Log out')),
-                ),
-              ),
-            )
+            Card(
+              elevation: 1,
+              child: CustomExpandedButton(icon: Icons.favorite, content: 'My Hearts'),
+            ),
+            Card(
+              elevation: 1,
+              child: CustomExpandedButton(icon: Icons.shopping_cart_outlined, content: 'Cart'),
+            ),
+            Card(
+              elevation: 1,
+              child: CustomExpandedButton(icon: Icons.logout, content: 'Log out'),
+            ),
+
           ],
         ),
       ),

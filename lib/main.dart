@@ -2,12 +2,14 @@ import 'package:art_gallery_auction/pages/page_add_item.dart';
 import 'package:art_gallery_auction/pages/page_root.dart';
 import 'package:art_gallery_auction/pages/page_sign_in.dart';
 import 'package:art_gallery_auction/pages/page_tab.dart';
+import 'package:art_gallery_auction/providers/firebase_uploader.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,9 +65,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Color.fromARGB(255, 253, 253, 253),
         canvasColor: designColorDeepDarkBrown,
       ),
-      home: SafeArea(
-        child: RootPage(),
-      ),
+      home: SafeArea(child: RootPage()),
     );
   }
 }

@@ -1,4 +1,4 @@
-class User {
+class CustomUser {
   String userName;
   String emailAddr;
   String homeAddr;
