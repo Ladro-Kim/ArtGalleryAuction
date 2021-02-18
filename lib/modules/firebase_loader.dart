@@ -10,7 +10,7 @@ class FirebaseLoader {
   FirebaseStorage _firebaseStorageRef;
 
   Future<String> UploadPictureToFirestorage() async {
-    // _firebaseStorageRef = FirebaseStorage.instance.ref()
+    // _firebaseStorageRef = await FirebaseStorage.instance.ref()
     //     .child('path1')
     //     .child('path2')
     //     .putFile(file);
