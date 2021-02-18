@@ -31,6 +31,9 @@ class _AddItemPageState extends State<AddItemPage> {
     return Scaffold(
       backgroundColor: designColorBrightGrey,
       appBar: AppBar(
+        actions: [IconButton(icon: Icon(Icons.send), onPressed: (){
+
+        })],
         title: Text("Upload Item Page",
             style: Theme.of(context).textTheme.headline1),
         backgroundColor: designColorDeepDarkBrown,
@@ -125,8 +128,8 @@ class _AddItemPageState extends State<AddItemPage> {
 
   Future GetImageFromGallery() async {
     _pickedImage = await _imagePicker.getImage(source: ImageSource.gallery);
+    if (_pickedImage == null) return;
     setState(() {
-      if (_pickedImage == null) return;
       _images.add(File(_pickedImage.path));
       Get.back();
     });
@@ -134,8 +137,8 @@ class _AddItemPageState extends State<AddItemPage> {
 
   Future GetImageFromCamera() async {
     _pickedImage = await _imagePicker.getImage(source: ImageSource.camera);
+    if (_pickedImage == null) return;
     setState(() {
-      if (_pickedImage == null) return;
       _images.add(File(_pickedImage.path));
       Get.back();
     });

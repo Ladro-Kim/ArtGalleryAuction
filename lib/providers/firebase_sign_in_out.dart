@@ -2,6 +2,7 @@ import 'package:art_gallery_auction/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:art_gallery_auction/modules/firebase_loader.dart';
 
 class SignInOutProvider extends ChangeNotifier {
   User firebaseUser;
@@ -17,6 +18,9 @@ class SignInOutProvider extends ChangeNotifier {
       idToken: _googleAuth.idToken,
       accessToken: _googleAuth.accessToken,
     ))).user;
+    if (user != null) {
+      FirebaseHandler().SetUserToFirestore(user);
+    }
     notifyListeners();
     return user;
   }

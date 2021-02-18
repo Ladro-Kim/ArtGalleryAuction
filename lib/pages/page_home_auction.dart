@@ -1,3 +1,5 @@
+import 'package:art_gallery_auction/utils/enums.dart';
+import 'package:art_gallery_auction/widgets/widget_home_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeAuctionPage extends StatefulWidget {
@@ -8,8 +10,6 @@ class HomeAuctionPage extends StatefulWidget {
 class _HomeAuctionPageState extends State<HomeAuctionPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Auction"),
-    );
+    return HomeView(salesType: SalesType.auction,);
   }
 }

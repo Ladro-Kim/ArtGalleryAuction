@@ -32,5 +32,9 @@ class Item {
     sItemIndex = FirebaseAuth.instance.currentUser.email + uploadDate.toString();
   } // user input
 
+  factory Item.fromJson(json) {
+    
+    return null;
+  }
 
 }
