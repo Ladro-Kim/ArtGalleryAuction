@@ -1,9 +1,7 @@
-import 'package:art_gallery_auction/providers/firebase_uploader.dart';
+import 'package:art_gallery_auction/providers/firebase_sign_in_out.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:art_gallery_auction/widgets/widget_custom_expanded_button.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -17,8 +15,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: designColorBrightGrey,
       appBar: AppBar(
-        title: Text("Profile",
-            style: Theme.of(context).textTheme.headline1),
+        title: Text("Profile", style: Theme.of(context).textTheme.headline1),
         backgroundColor: designColorDeepDarkBrown,
         centerTitle: true,
       ),
@@ -33,7 +30,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   Stack(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 18),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0, vertical: 18),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
@@ -84,29 +82,38 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Card(
               elevation: 1,
-              child: CustomExpandedButton(icon: Icons.done, content: 'Sales History'),
+              child: CustomExpandedButton(
+                  icon: Icons.done, content: 'Sales History'),
             ),
             Card(
               elevation: 1,
-              child: CustomExpandedButton(icon: Icons.card_travel, content: 'Purchase History'),
+              child: CustomExpandedButton(
+                  icon: Icons.card_travel, content: 'Purchase History'),
             ),
             Card(
               elevation: 1,
-              child: CustomExpandedButton(icon: Icons.book_outlined, content: 'My Stories'),
+              child: CustomExpandedButton(
+                  icon: Icons.book_outlined, content: 'My Stories'),
             ),
             Card(
               elevation: 1,
-              child: CustomExpandedButton(icon: Icons.favorite, content: 'My Hearts'),
+              child: CustomExpandedButton(
+                  icon: Icons.favorite, content: 'My Hearts'),
             ),
             Card(
               elevation: 1,
-              child: CustomExpandedButton(icon: Icons.shopping_cart_outlined, content: 'Cart'),
+              child: CustomExpandedButton(
+                  icon: Icons.shopping_cart_outlined, content: 'Cart'),
             ),
             Card(
               elevation: 1,
-              child: CustomExpandedButton(icon: Icons.logout, content: 'Log out'),
+              child: CustomExpandedButton(
+                  icon: Icons.logout,
+                  content: 'Log out',
+                  function: () =>
+                      Provider.of<SignInOutProvider>(context, listen: false)
+                          .SignOut()),
             ),
-
           ],
         ),
       ),

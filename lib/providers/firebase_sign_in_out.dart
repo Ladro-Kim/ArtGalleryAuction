@@ -1,9 +1,9 @@
-import 'package:art_gallery_auction/class/user.dart';
+import 'package:art_gallery_auction/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class FirebaseProvider extends ChangeNotifier {
+class SignInOutProvider extends ChangeNotifier {
   User firebaseUser;
   CustomUser appUser;
 
@@ -24,14 +24,6 @@ class FirebaseProvider extends ChangeNotifier {
   void SignOut() {
     _firebaseAuth.signOut();
     _googleSignIn.signOut();
+    notifyListeners(); // stream & notifyListeners..
   }
-
-  void UploadPictureToFirestorage() {
-
-  }
-
-  void UploadJsonToFirestore() {
-
-  }
-
 }

@@ -1,4 +1,4 @@
-import 'package:art_gallery_auction/class/item.dart';
+import 'package:art_gallery_auction/models/item.dart';
 import 'package:flutter/material.dart';
 
 class CustomSwitch extends StatefulWidget {

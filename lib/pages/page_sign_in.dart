@@ -1,4 +1,4 @@
-import 'package:art_gallery_auction/providers/firebase_uploader.dart';
+import 'package:art_gallery_auction/providers/firebase_sign_in_out.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +43,7 @@ class _SignInPageState extends State<SignInPage> with SingleTickerProviderStateM
             ),
             child: Text("Sign in with Google"),
             onPressed: () {
-              Provider.of<FirebaseProvider>(context, listen: false).SignInWithGoogle();
+              Provider.of<SignInOutProvider>(context, listen: false).SignInWithGoogle();
             },
           ),
           builder: (BuildContext context, double tween ,Widget Child){

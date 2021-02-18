@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class CustomExpandedButton extends StatelessWidget {
   IconData icon;
   String content;
+  Function function;
+
   Color _color = Colors.blue;
 
-  CustomExpandedButton({@required this.icon, @required  this.content});
+  CustomExpandedButton({@required this.icon, @required  this.content, this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class CustomExpandedButton extends StatelessWidget {
           Expanded(flex: 8, child: Text("  ${content}", style: TextStyle(color: _color),)),
         ],
       ),
+      onPressed: function,
     );
   }
 }

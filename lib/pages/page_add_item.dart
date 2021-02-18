@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:art_gallery_auction/class/item.dart';
+import 'package:art_gallery_auction/models/item.dart';
 import 'package:art_gallery_auction/utils/design_guide.dart';
 import 'package:art_gallery_auction/widgets/widget_custom_switch.dart';
 import 'package:art_gallery_auction/widgets/widget_time_text.dart';
